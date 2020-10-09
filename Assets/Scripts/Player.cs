@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float movementSpeed = 5.0f;
     [SerializeField]
+    private float thrusterMultiplier = 1.5f;
+    [SerializeField]
     private int lives = 3;
     [SerializeField]
     private int score = 0;
@@ -56,11 +58,12 @@ public class Player : MonoBehaviour
     private GameObject sfx = null;
 
     private bool isTripleShotActive = false;
-    private bool isSpeedBoostActive = false;
     private bool isShieldActive = false;
     //0 = Left, 1 = Right
     private int leftBurning = 0;
     private int rightBurning = 2;
+
+    private bool isThrustersActive = false;
 
     private SpawnManager spawnManager = null;
     private UI_Manager ui_manager = null;
@@ -108,6 +111,11 @@ public class Player : MonoBehaviour
         {
             ShootLaser();
         }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            movementSpeed *= thrusterMultiplier;
+        }
     }
 
     void PlayerBounds()
@@ -132,10 +140,16 @@ public class Player : MonoBehaviour
         verticalInput = Input.GetAxis("Vertical");
         //transform.Translate((Vector3.up * verticalInput) * movementSpeed * Time.deltaTime);
 
-        if (movementSpeed > 5f && !isSpeedBoostActive)
+        if (isThrustersActive)
+        {
+            movementSpeed *= thrusterMultiplier;
+        }
+        else
         {
             movementSpeed = 5f;
         }
+
+        IncreaseThrust();
 
         transform.Translate(new Vector3(horizonalInput, verticalInput, 0) * movementSpeed * Time.deltaTime);
 
@@ -220,7 +234,6 @@ public class Player : MonoBehaviour
 
     public void EnableSpeedBoost()
     {
-        isSpeedBoostActive = true;
         if(movementSpeed == 5f)
         {
             movementSpeed += speedBoost;
@@ -232,7 +245,7 @@ public class Player : MonoBehaviour
     IEnumerator SpeedBoostPowerDownRoutine()
     {
         yield return new WaitForSeconds(speedBoostLifeSpan);
-        isSpeedBoostActive = false;
+        movementSpeed = 5f;
     }
 
     public void EnablePlayerShield()
@@ -248,6 +261,18 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(shieldLifeSpawn);
         isShieldActive = false;
         playerShield.SetActive(false);
+    }
+
+    void IncreaseThrust()
+    {
+        if(Input.GetKey(KeyCode.LeftShift) && !isThrustersActive)
+        {
+            isThrustersActive = true;
+        }
+        else
+        {
+            isThrustersActive = false;
+        }
     }
 
     public void IncreaseScore(int points)
