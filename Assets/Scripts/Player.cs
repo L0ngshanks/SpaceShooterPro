@@ -40,6 +40,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float fireRate = 0.15f;
     private float fireNext = -1.0f;
+    [SerializeField]
+    private int shotCount = 15;
 
     [Header("Power Up")]
     [SerializeField]
@@ -155,9 +157,11 @@ public class Player : MonoBehaviour
 
         if (!isTripleShotActive)
         {
-            if (laserProjectile != null)
+            if (laserProjectile != null && shotCount > 0)
             {
                 Instantiate(laserProjectile, transform.position + new Vector3(0, laserOffset, 0), Quaternion.identity);
+                sfx.GetComponent<SFX>().PlayLaserClip();
+                shotCount--;
             }
         }
         else
@@ -165,10 +169,10 @@ public class Player : MonoBehaviour
             if (tripleShotProjectile != null)
             {
                 Instantiate(tripleShotProjectile, transform.position + new Vector3(0, laserOffset, 0), Quaternion.identity);
+                sfx.GetComponent<SFX>().PlayLaserClip();
             }
         }
 
-        sfx.GetComponent<SFX>().PlayLaserClip();
     }
     public void Damage()
     {
