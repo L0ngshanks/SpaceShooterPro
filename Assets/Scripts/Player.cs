@@ -57,17 +57,22 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameObject sfx = null;
 
+    [SerializeField]
+    private GameObject thrustersBar = null;
+
     private bool isTripleShotActive = false;
     private bool isShieldActive = false;
     //0 = Left, 1 = Right
     private int leftBurning = 0;
     private int rightBurning = 2;
 
-    private bool isThrustersActive = false;
+    private float thrustersAvailable = 0.0f;
+    private bool canThrust = false;
+    private float thrusterDelay = 5.0f;
+    private float thrusterNext = -1.0f;
 
     private SpawnManager spawnManager = null;
     private UI_Manager ui_manager = null;
-
 
     [Header("Input Debugging")]
     public float horizonalInput = 0.0f;
@@ -79,16 +84,21 @@ public class Player : MonoBehaviour
         transform.position = Vector3.zero;
         spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
 
-        if(spawnManager == null)
+        if (spawnManager == null)
         {
             Debug.LogError("SpawnManager is equal to NULL");
         }
 
         ui_manager = GameObject.Find("Canvas").GetComponent<UI_Manager>();
 
-        if(ui_manager == null)
+        if (ui_manager == null)
         {
             Debug.LogError("ui_manager is equal to NULL");
+        }
+
+        if (thrustersBar == null)
+        {
+            Debug.LogError("Thrusters Bar is equal to NULL");
         }
 
         if (playerShield == null)
@@ -96,7 +106,7 @@ public class Player : MonoBehaviour
             Debug.LogError("PlayerShield is equal to NULL");
         }
 
-        if(sfx == null)
+        if (sfx == null)
         {
             Debug.LogError("SFX is equal to NULL");
         }
@@ -110,11 +120,6 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > fireNext)
         {
             ShootLaser();
-        }
-
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            movementSpeed *= thrusterMultiplier;
         }
     }
 
@@ -132,22 +137,10 @@ public class Player : MonoBehaviour
 
     void CalculateMovement()
     {
-        //transform.Translate(Time.deltaTime,0, 0);
-
         horizonalInput = Input.GetAxis("Horizontal");
-        //transform.Translate((Vector3.right * horizonalInput) * movementSpeed * Time.deltaTime);
 
         verticalInput = Input.GetAxis("Vertical");
-        //transform.Translate((Vector3.up * verticalInput) * movementSpeed * Time.deltaTime);
 
-        if (isThrustersActive)
-        {
-            movementSpeed *= thrusterMultiplier;
-        }
-        else
-        {
-            movementSpeed = 5f;
-        }
 
         IncreaseThrust();
 
@@ -169,7 +162,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            if(tripleShotProjectile != null)
+            if (tripleShotProjectile != null)
             {
                 Instantiate(tripleShotProjectile, transform.position + new Vector3(0, laserOffset, 0), Quaternion.identity);
             }
@@ -179,9 +172,9 @@ public class Player : MonoBehaviour
     }
     public void Damage()
     {
-        if(isShieldActive)
+        if (isShieldActive)
         {
-            if(playerShield != null)
+            if (playerShield != null)
             {
                 playerShield.SetActive(false);
                 isShieldActive = false;
@@ -202,7 +195,7 @@ public class Player : MonoBehaviour
     {
         if (lives < 1)
         {
-            if(spawnManager != null)
+            if (spawnManager != null)
             {
                 spawnManager.OnPlayerDeath();
             }
@@ -234,7 +227,7 @@ public class Player : MonoBehaviour
 
     public void EnableSpeedBoost()
     {
-        if(movementSpeed == 5f)
+        if (movementSpeed == 5f)
         {
             movementSpeed += speedBoost;
         }
@@ -265,13 +258,33 @@ public class Player : MonoBehaviour
 
     void IncreaseThrust()
     {
-        if(Input.GetKey(KeyCode.LeftShift) && !isThrustersActive)
+        thrustersAvailable = thrustersBar.GetComponent<ProgressBar>().SliderValue();
+
+        if(thrustersAvailable >= 0.02f)
         {
-            isThrustersActive = true;
+            if(Time.time > thrusterNext && !canThrust)
+            {
+                thrusterNext = Time.time + thrusterDelay;
+                canThrust = true;
+            }
         }
         else
         {
-            isThrustersActive = false;
+            canThrust = false;
+        }
+
+        if (canThrust && Input.GetKey(KeyCode.LeftShift))
+        {
+            if (movementSpeed == 5.0f)
+            {
+                thrustersBar.GetComponent<ProgressBar>().DecrementProgressBar(true);
+                movementSpeed *= thrusterMultiplier;
+            }
+        }
+        else
+        {
+            movementSpeed = 5.0f;
+            thrustersBar.GetComponent<ProgressBar>().DecrementProgressBar(false);
         }
     }
 
@@ -284,8 +297,8 @@ public class Player : MonoBehaviour
     void EnableDamage()
     {
         int engine = UnityEngine.Random.Range(leftBurning, rightBurning);
-        
-        if(engine == 0)
+
+        if (engine == 0)
         {
             leftEngine.SetActive(true);
             leftBurning = 1;
@@ -299,7 +312,7 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Laser")
+        if (collision.tag == "Laser")
         {
             if (collision.GetComponent<Laser>().IsEnemyLaser())
             {
