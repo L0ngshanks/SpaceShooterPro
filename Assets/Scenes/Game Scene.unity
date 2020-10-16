@@ -317,7 +317,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &299051889
 MonoBehaviour:
@@ -986,6 +986,7 @@ MonoBehaviour:
     type: 3}
   laserOffset: 1.05
   fireRate: 0.15
+  shotCount: 15
   tripleShotLifeSpan: 5
   speedBoostLifeSpan: 5
   speedBoost: 10
@@ -1275,7 +1276,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fillRate: 0.1
   decrementFill: 0
-  incrementFill: 0
   particleSystemContainer: {fileID: 1386238261}
 --- !u!1 &1016493767
 GameObject:
@@ -6652,11 +6652,14 @@ MonoBehaviour:
   enemyContainer: {fileID: 618560718}
   enemySpawn: {fileID: 8143546763781851518, guid: c8c7956ae6a7f794ca271f0f1efdc509,
     type: 3}
-  powerUpContainer: {fileID: 1969002387}
+  powerUpContainer: {fileID: 0}
   arrayOfPowerUps:
   - {fileID: 3945372069975876144, guid: 672fe2867a8465c43bfb68b35b55e46c, type: 3}
   - {fileID: 8552088147432857718, guid: efbc98ecd32e60a4da0a185522befbf4, type: 3}
   - {fileID: 6974015419673830760, guid: f7ddc6bad695a8c4fa3db3cccd981587, type: 3}
+  ammoPrefab: {fileID: 499963387186601820, guid: 46737399058232d46b5fcadcae687158,
+    type: 3}
+  ammoRespawnRate: 10
 --- !u!4 &1910172273
 Transform:
   m_ObjectHideFlags: 0
@@ -6669,7 +6672,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 618560719}
-  - {fileID: 1969002388}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6855,36 +6857,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1969002387
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1969002388}
-  m_Layer: 0
-  m_Name: PowerUp Container
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1969002388
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1969002387}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1910172273}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1983858051
 GameObject:
   m_ObjectHideFlags: 0
@@ -7151,7 +7123,7 @@ PrefabInstance:
     - target: {fileID: 6869878984907426609, guid: c084e59de13675345a071aa7f24a450e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6869878984907426609, guid: c084e59de13675345a071aa7f24a450e,
         type: 3}

@@ -260,6 +260,12 @@ public class Player : MonoBehaviour
         playerShield.SetActive(false);
     }
 
+    public void AddAmmo()
+    {
+        shotCount = 15;
+        sfx.GetComponent<SFX>().PlayPowerUpClip();
+    }
+
     void IncreaseThrust()
     {
         thrustersAvailable = thrustersBar.GetComponent<ProgressBar>().SliderValue();

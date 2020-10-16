@@ -16,6 +16,12 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     private GameObject[] arrayOfPowerUps = null;
 
+    [Header("Fixed Timer Spawns")]
+    [SerializeField]
+    private GameObject ammoPrefab = null;
+    [SerializeField]
+    private float ammoRespawnRate = 5.0f;
+
     private bool stopSpawning = false;
     private float leftBoundaryX = -9.25f;
     private float rightBoundaryX = 9.25f;
@@ -30,6 +36,7 @@ public class SpawnManager : MonoBehaviour
     {
         StartCoroutine(SpawnEnemyRoutine());
         StartCoroutine(SpawnRandomPowerUp());
+        StartCoroutine(SpawnFixedTimerPowerUps());
     }
     IEnumerator SpawnEnemyRoutine()
     {
@@ -47,15 +54,29 @@ public class SpawnManager : MonoBehaviour
     {
         while (stopSpawning == false)
         {
-            if (enemySpawn != null)
+            if (arrayOfPowerUps != null)
             {
                 GameObject powerUpToSpawn = arrayOfPowerUps[UnityEngine.Random.Range(0, arrayOfPowerUps.Length)];
                 Vector3 powerUpSpawnLocation = new Vector3(UnityEngine.Random.Range(leftBoundaryX, rightBoundaryX), startY, 0f);
 
                 GameObject newPowerUp = Instantiate(powerUpToSpawn, powerUpSpawnLocation, Quaternion.identity);
-                newPowerUp.transform.parent = powerUpContainer.transform;
             }
             yield return new WaitForSeconds(UnityEngine.Random.Range(3, 9));
+        }
+    }
+
+    IEnumerator SpawnFixedTimerPowerUps()
+    {
+        while(stopSpawning == false)
+        {
+            if(ammoPrefab != null)
+            {
+                Debug.Log("Ammo");
+                Vector3 powerUpSpawnLocation = new Vector3(UnityEngine.Random.Range(leftBoundaryX, rightBoundaryX), startY, 0f);
+                GameObject newPowerUp = Instantiate(ammoPrefab, powerUpSpawnLocation, Quaternion.identity);
+
+            }
+            yield return new WaitForSeconds(ammoRespawnRate);
         }
     }
 
