@@ -85,7 +85,7 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Laser")
+        if (other.gameObject.CompareTag("Laser"))
         {
             if (player != null)
             {
@@ -103,7 +103,7 @@ public class Enemy : MonoBehaviour
                 Destroy(this.gameObject, 2.8f);
             }
         }
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.CompareTag("Player"))
         {
             Player player = other.transform.GetComponent<Player>();
 

@@ -9,9 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8996857232519508727}
+  - component: {fileID: 5929542166922359370}
+  - component: {fileID: 7953055025124442923}
+  - component: {fileID: 5096075068546213483}
   m_Layer: 0
   m_Name: Enemy_Laser
-  m_TagString: Untagged
+  m_TagString: Laser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25,13 +28,74 @@ Transform:
   m_GameObject: {fileID: 8605053985876312402}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_Children:
   - {fileID: 8472121652636219980}
   - {fileID: 2732396485226055317}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &5929542166922359370
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8605053985876312402}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.01, y: -1.69}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.72, y: 0.57}
+  m_EdgeRadius: 0
+--- !u!50 &7953055025124442923
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8605053985876312402}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &5096075068546213483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8605053985876312402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97b14680fe5467346850e813a5797f94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laserSpeed: 8
+  laserMaxHeight: 8
 --- !u!1001 &2088187998136159790
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42,12 +106,12 @@ PrefabInstance:
     - target: {fileID: 4112305205709572283, guid: fa6bfa66d23863745bdb07e6d2deaa10,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.04
+      value: 0.223
       objectReference: {fileID: 0}
     - target: {fileID: 4112305205709572283, guid: fa6bfa66d23863745bdb07e6d2deaa10,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.43
+      value: -1.695
       objectReference: {fileID: 0}
     - target: {fileID: 4112305205709572283, guid: fa6bfa66d23863745bdb07e6d2deaa10,
         type: 3}
@@ -109,6 +173,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Laser_Right
       objectReference: {fileID: 0}
+    - target: {fileID: 4112305205709572284, guid: fa6bfa66d23863745bdb07e6d2deaa10,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 4112305205709572286, guid: fa6bfa66d23863745bdb07e6d2deaa10,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa6bfa66d23863745bdb07e6d2deaa10, type: 3}
 --- !u!4 &2732396485226055317 stripped
@@ -127,12 +201,12 @@ PrefabInstance:
     - target: {fileID: 4112305205709572283, guid: fa6bfa66d23863745bdb07e6d2deaa10,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.04
+      value: -0.216
       objectReference: {fileID: 0}
     - target: {fileID: 4112305205709572283, guid: fa6bfa66d23863745bdb07e6d2deaa10,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.43
+      value: -1.695
       objectReference: {fileID: 0}
     - target: {fileID: 4112305205709572283, guid: fa6bfa66d23863745bdb07e6d2deaa10,
         type: 3}
@@ -193,6 +267,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Laser_Left
+      objectReference: {fileID: 0}
+    - target: {fileID: 4112305205709572284, guid: fa6bfa66d23863745bdb07e6d2deaa10,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 4112305205709572286, guid: fa6bfa66d23863745bdb07e6d2deaa10,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa6bfa66d23863745bdb07e6d2deaa10, type: 3}

@@ -12,8 +12,6 @@ public class SpawnManager : MonoBehaviour
 
     [Header("PowerUp Spawns")]
     [SerializeField]
-    private GameObject powerUpContainer = null;
-    [SerializeField]
     private GameObject[] arrayOfPowerUps = null;
 
     [Header("Fixed Timer Spawns")]

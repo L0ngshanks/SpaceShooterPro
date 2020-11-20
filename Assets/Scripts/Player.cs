@@ -231,7 +231,7 @@ public class Player : MonoBehaviour
 
     public void EnableSpeedBoost()
     {
-        if (movementSpeed == 5f)
+        if (Mathf.Approximately(movementSpeed, 5.0f))
         {
             movementSpeed += speedBoost;
         }
@@ -285,7 +285,7 @@ public class Player : MonoBehaviour
 
         if (canThrust && Input.GetKey(KeyCode.LeftShift))
         {
-            if (movementSpeed == 5.0f)
+            if (Mathf.Approximately(movementSpeed, 5.0f))
             {
                 thrustersBar.GetComponent<ProgressBar>().DecrementProgressBar(true);
                 movementSpeed *= thrusterMultiplier;
@@ -322,7 +322,7 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Laser")
+        if (collision.CompareTag("Laser"))
         {
             if (collision.GetComponent<Laser>().IsEnemyLaser())
             {
