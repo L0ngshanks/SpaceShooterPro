@@ -72,6 +72,9 @@ public class Player : MonoBehaviour
     private bool canThrust = false;
     private float thrusterDelay = 5.0f;
     private float thrusterNext = -1.0f;
+    
+    [SerializeField]
+    private int _shieldLives = 3;
 
     private SpawnManager spawnManager = null;
     private UI_Manager ui_manager = null;
@@ -178,7 +181,7 @@ public class Player : MonoBehaviour
     {
         if (isShieldActive)
         {
-            if (playerShield != null)
+            if (playerShield != null && _shieldLives == 1)
             {
                 playerShield.SetActive(false);
                 isShieldActive = false;
@@ -187,8 +190,10 @@ public class Player : MonoBehaviour
         }
 
         lives -= 1;
-
         Mathf.Clamp(lives, 0f, 3f);
+
+        _shieldLives -= 1;
+        Mathf.Clamp(_shieldLives, 0, 3);
 
         EnableDamage();
         ui_manager.UpdateLives(lives);
@@ -250,6 +255,7 @@ public class Player : MonoBehaviour
         isShieldActive = true;
         playerShield.SetActive(true);
         sfx.GetComponent<SFX>().PlayPowerUpClip();
+        _shieldLives = 3;
         StartCoroutine(PlayerShieldPowerDownRoutine());
     }
 
@@ -330,5 +336,10 @@ public class Player : MonoBehaviour
                 Destroy(collision.gameObject);
             }
         }
+    }
+
+    public int GetShieldStrength()
+    {
+        return _shieldLives;
     }
 }

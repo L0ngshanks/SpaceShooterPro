@@ -46,6 +46,7 @@
           <e p="PowerUp.cs" t="Include" />
           <e p="ProgressBar.cs" t="Include" />
           <e p="SFX.cs" t="Include" />
+          <e p="ShieldBehavior.cs" t="Include" />
           <e p="SpawnManager.cs" t="Include" />
           <e p="TextColorSwitch.cs" t="Include" />
           <e p="UI_Manager.cs" t="Include" />

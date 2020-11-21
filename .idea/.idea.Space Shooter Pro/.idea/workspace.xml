@@ -20,18 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="106de038-83b5-444c-9f26-e0b2b2963b19" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Space Shooter Pro/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Space Shooter Pro/.idea/indexLayout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Space Shooter Pro/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Space Shooter Pro/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Space Shooter Pro/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Space Shooter Pro/riderModule.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Testing.unity" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Testing.unity.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemy/Enemy_Laser.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Enemy/Enemy_Laser.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Shield.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ShieldBehavior.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ShieldBehavior.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Space Shooter Pro/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Space Shooter Pro/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Space Shooter Pro/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Space Shooter Pro/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/ShieldPowerUp_Anim.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/ShieldPowerUp_Anim.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GameDevHQ/FileBase/Plugin/downloads.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GameDevHQ/FileBase/Plugin/downloads.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SpawnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SpawnManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,8 +43,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Assets/Scripts/Enemy.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Player.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SpawnManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ShieldBehavior.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player.cs" />
       </list>
     </option>
   </component>
@@ -66,6 +65,12 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
@@ -105,7 +110,8 @@
       <option name="presentableId" value="Default" />
       <updated>1604676958925</updated>
       <workItem from="1604676970068" duration="136000" />
-      <workItem from="1605894938007" duration="1329000" />
+      <workItem from="1605894938007" duration="3303000" />
+      <workItem from="1605985632910" duration="1106000" />
     </task>
     <servers />
   </component>
