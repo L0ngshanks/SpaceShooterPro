@@ -20,16 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="106de038-83b5-444c-9f26-e0b2b2963b19" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Shield.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ShieldBehavior.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ShieldBehavior.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Space Shooter Pro/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Space Shooter Pro/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Space Shooter Pro/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Space Shooter Pro/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Space Shooter Pro/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Space Shooter Pro/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/ShieldPowerUp_Anim.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/ShieldPowerUp_Anim.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GameDevHQ/FileBase/Plugin/downloads.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GameDevHQ/FileBase/Plugin/downloads.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game Scene.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +104,7 @@
       <updated>1604676958925</updated>
       <workItem from="1604676970068" duration="136000" />
       <workItem from="1605894938007" duration="3303000" />
-      <workItem from="1605985632910" duration="1106000" />
+      <workItem from="1605985632910" duration="1418000" />
     </task>
     <servers />
   </component>

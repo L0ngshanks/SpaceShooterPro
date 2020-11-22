@@ -847,6 +847,7 @@ GameObject:
   - component: {fileID: 837747431}
   - component: {fileID: 837747433}
   - component: {fileID: 837747432}
+  - component: {fileID: 837747434}
   m_Layer: 0
   m_Name: PlayerShields
   m_TagString: Untagged
@@ -937,6 +938,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &837747434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837747430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 021048793875a7f49a91c8db851ce3cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &980178361
 GameObject:
   m_ObjectHideFlags: 0
@@ -994,6 +1007,7 @@ MonoBehaviour:
   shieldLifeSpawn: 5
   sfx: {fileID: 2055082634}
   thrustersBar: {fileID: 1011184281}
+  _shieldLives: 3
   horizonalInput: 0
   verticalInput: 0
 --- !u!212 &980178363
@@ -6652,7 +6666,6 @@ MonoBehaviour:
   enemyContainer: {fileID: 618560718}
   enemySpawn: {fileID: 8143546763781851518, guid: c8c7956ae6a7f794ca271f0f1efdc509,
     type: 3}
-  powerUpContainer: {fileID: 0}
   arrayOfPowerUps:
   - {fileID: 3945372069975876144, guid: 672fe2867a8465c43bfb68b35b55e46c, type: 3}
   - {fileID: 8552088147432857718, guid: efbc98ecd32e60a4da0a185522befbf4, type: 3}
