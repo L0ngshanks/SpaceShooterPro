@@ -54,7 +54,9 @@ public class SpawnManager : MonoBehaviour
         {
             if (arrayOfPowerUps != null)
             {
-                GameObject powerUpToSpawn = arrayOfPowerUps[UnityEngine.Random.Range(0, arrayOfPowerUps.Length)];
+                int rnd = UnityEngine.Random.Range(0, arrayOfPowerUps.Length);
+                Debug.Log("Random for Powerup: " + rnd);
+                GameObject powerUpToSpawn = arrayOfPowerUps[rnd];
                 Vector3 powerUpSpawnLocation = new Vector3(UnityEngine.Random.Range(leftBoundaryX, rightBoundaryX), startY, 0f);
 
                 GameObject newPowerUp = Instantiate(powerUpToSpawn, powerUpSpawnLocation, Quaternion.identity);
@@ -69,7 +71,6 @@ public class SpawnManager : MonoBehaviour
         {
             if(ammoPrefab != null)
             {
-                Debug.Log("Ammo");
                 Vector3 powerUpSpawnLocation = new Vector3(UnityEngine.Random.Range(leftBoundaryX, rightBoundaryX), startY, 0f);
                 GameObject newPowerUp = Instantiate(ammoPrefab, powerUpSpawnLocation, Quaternion.identity);
 
@@ -82,6 +83,4 @@ public class SpawnManager : MonoBehaviour
     {
         stopSpawning = true;
     }
-
-
 }

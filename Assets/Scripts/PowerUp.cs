@@ -8,16 +8,22 @@ public class PowerUp : MonoBehaviour
     private float speed = 3f;
     [SerializeField]
     private float destroyPointY = -5f;
+    [Header("5 = Multishot")]
+    [Header("4 = Health")]
+    [Header("3 = Ammo")]
     [Header("2 = Shields")]
     [Header("1 = Speed")]
     [Header("0 = Triple Shot")]
-    [Header("Type = {0,1,2}")]
+    [Header("Type = {0,1,2,3,4,5}")]
     [SerializeField]
     private int powerUpID = 0;
     //PowerUp ID
     // 0 = TripleShot
     // 1 = Speed
     // 2 = Shield
+    // 3 = Ammo
+    // 4 = Health
+    // 5 = Multishot
 
     // Start is called before the first frame update
     void Start()
@@ -56,6 +62,9 @@ public class PowerUp : MonoBehaviour
                         break;
                     case 3:
                         player.AddAmmo();
+                        break;
+                    case 4:
+                        player.AddHealth();
                         break;
                     default:
                         Debug.LogWarning("PowerUp ID Default value.");

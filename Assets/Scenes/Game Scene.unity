@@ -1004,10 +1004,10 @@ MonoBehaviour:
   speedBoostLifeSpan: 5
   speedBoost: 10
   playerShield: {fileID: 837747430}
-  shieldLifeSpawn: 5
+  shieldLifeSpan: 5
+  shieldLives: 3
   sfx: {fileID: 2055082634}
   thrustersBar: {fileID: 1011184281}
-  _shieldLives: 3
   horizonalInput: 0
   verticalInput: 0
 --- !u!212 &980178363
@@ -6670,6 +6670,7 @@ MonoBehaviour:
   - {fileID: 3945372069975876144, guid: 672fe2867a8465c43bfb68b35b55e46c, type: 3}
   - {fileID: 8552088147432857718, guid: efbc98ecd32e60a4da0a185522befbf4, type: 3}
   - {fileID: 6974015419673830760, guid: f7ddc6bad695a8c4fa3db3cccd981587, type: 3}
+  - {fileID: 6472869496915175739, guid: a8099387fcd1c6f469dcef91e25d44cc, type: 3}
   ammoPrefab: {fileID: 499963387186601820, guid: 46737399058232d46b5fcadcae687158,
     type: 3}
   ammoRespawnRate: 10

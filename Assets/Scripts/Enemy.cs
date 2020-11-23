@@ -22,6 +22,8 @@ public class Enemy : MonoBehaviour
 
     private float fireRate = 3f;
     private float canFire = -1f;
+
+    private bool stopFiring = false;
     void Start()
     {
         transform.position = new Vector3(UnityEngine.Random.Range(-9.25f, 9.25f), respawnY, 0);
@@ -55,20 +57,22 @@ public class Enemy : MonoBehaviour
     {
         CalculateMovement();
 
-        if(Time.time > canFire)
+        if (!stopFiring)
         {
-            fireRate = UnityEngine.Random.Range(3f, 8f);
-            canFire = Time.time + fireRate;
-
-            GameObject enemyLaser = Instantiate(laser, transform.position, Quaternion.identity);
-
-            Laser[] lasers = enemyLaser.GetComponentsInChildren<Laser>();
-
-            for(int i = 0; i < lasers.Length; ++i)
+            if(Time.time > canFire)
             {
-                lasers[i].AssignEnemyLaser();
+                fireRate = UnityEngine.Random.Range(3f, 8f);
+                canFire = Time.time + fireRate;
+
+                GameObject enemyLaser = Instantiate(laser, transform.position, Quaternion.identity);
+
+                Laser[] lasers = enemyLaser.GetComponentsInChildren<Laser>();
+
+                for(int i = 0; i < lasers.Length; ++i)
+                {
+                    lasers[i].AssignEnemyLaser();
+                }
             }
-            
         }
     }
 
@@ -99,6 +103,7 @@ public class Enemy : MonoBehaviour
                 sfx.PlayExplosionClip();
                 gameObject.GetComponent<BoxCollider2D>().enabled = false;
 
+                stopFiring = true;
                 Destroy(other.gameObject);
                 Destroy(this.gameObject, 2.8f);
             }
@@ -117,6 +122,7 @@ public class Enemy : MonoBehaviour
             sfx.PlayExplosionClip();
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
 
+            stopFiring = true;
             Destroy(this.gameObject, 2.8f);
         }
     }

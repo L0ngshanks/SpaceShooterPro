@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Player : MonoBehaviour
 {
@@ -53,7 +54,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     GameObject playerShield = null;
     [SerializeField]
-    private float shieldLifeSpawn = 5f;
+    private float shieldLifeSpan = 5f;
+    [SerializeField]
+    private int shieldLives = 3;
 
     [Header("Audio")]
     [SerializeField]
@@ -73,9 +76,6 @@ public class Player : MonoBehaviour
     private float thrusterDelay = 5.0f;
     private float thrusterNext = -1.0f;
     
-    [SerializeField]
-    private int _shieldLives = 3;
-
     private SpawnManager spawnManager = null;
     private UI_Manager ui_manager = null;
 
@@ -181,24 +181,24 @@ public class Player : MonoBehaviour
     {
         if (isShieldActive)
         {
-            if (playerShield != null && _shieldLives == 1)
+            if (playerShield != null && shieldLives == 1)
             {
                 playerShield.SetActive(false);
                 isShieldActive = false;
                 return;
             }
         }
+        else
+        {
+            lives -= 1;
+            Mathf.Clamp(lives, 0f, 3f);
+            EnableDamage();
+            ui_manager.UpdateLives(lives);
+            CheckLife();
+        }
 
-        lives -= 1;
-        Mathf.Clamp(lives, 0f, 3f);
-
-        _shieldLives -= 1;
-        Mathf.Clamp(_shieldLives, 0, 3);
-
-        EnableDamage();
-        ui_manager.UpdateLives(lives);
-
-        CheckLife();
+        shieldLives -= 1;
+        Mathf.Clamp(shieldLives, 0, 3);
     }
     void CheckLife()
     {
@@ -252,16 +252,24 @@ public class Player : MonoBehaviour
 
     public void EnablePlayerShield()
     {
-        isShieldActive = true;
-        playerShield.SetActive(true);
-        sfx.GetComponent<SFX>().PlayPowerUpClip();
-        _shieldLives = 3;
-        StartCoroutine(PlayerShieldPowerDownRoutine());
+        if (!isShieldActive)
+        {
+            isShieldActive = true;
+            playerShield.SetActive(true);
+            sfx.GetComponent<SFX>().PlayPowerUpClip();
+            shieldLives = 3;
+            StartCoroutine(PlayerShieldPowerDownRoutine());
+        }
+        else
+        {
+            shieldLives = 3;
+            sfx.GetComponent<SFX>().PlayPowerUpClip();
+        }
     }
 
     IEnumerator PlayerShieldPowerDownRoutine()
     {
-        yield return new WaitForSeconds(shieldLifeSpawn);
+        yield return new WaitForSeconds(shieldLifeSpan);
         isShieldActive = false;
         playerShield.SetActive(false);
     }
@@ -269,6 +277,12 @@ public class Player : MonoBehaviour
     public void AddAmmo()
     {
         shotCount = 15;
+        sfx.GetComponent<SFX>().PlayPowerUpClip();
+    }
+
+    public void AddHealth()
+    {
+        lives += 1;
         sfx.GetComponent<SFX>().PlayPowerUpClip();
     }
 
@@ -340,6 +354,6 @@ public class Player : MonoBehaviour
 
     public int GetShieldStrength()
     {
-        return _shieldLives;
+        return shieldLives;
     }
 }
